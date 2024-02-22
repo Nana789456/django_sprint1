@@ -48,14 +48,18 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    context = { 'posts': posts }
+    context = {
+        'posts': posts,
+    }
     return render(request, template, context)
 
 
 def post_detail(request, id):
     template = 'blog/detail.html'
     try:
-        context = { 'post': posts[id] }
+        context = {
+            'post': posts[id],
+        }
     except IndexError:
         return HttpResponseNotFound("<h1>Page not found</h>")
     return render(request, template, context)
@@ -63,5 +67,7 @@ def post_detail(request, id):
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    context = { 'category': category_slug }
+    context = {
+        'category': category_slug,
+    }
     return render(request, template, context)
